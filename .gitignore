@@ -1,3 +1,6 @@
 html-css/node_modules
 html-css/robben_ford.mp3
 html-css/robben_ford.mp4
+agenda/node_modules
+agenda/app/*.js
+agenda/app/*.js.map
