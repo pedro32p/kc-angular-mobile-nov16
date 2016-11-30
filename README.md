@@ -22,3 +22,18 @@ Esto nos abrirá una nueva pestaña en el navegador por defecto del sistema. Seg
 ```
 http://localhost:3000/05-web-storage.html
 ```
+
+Por contra, si lo que queremos es trabajar con la Agenda que estamos desarrollando en Angular, haremos lo siguiente. Teniendo el repositorio clonado o descargado:
+
+```bash
+$ cd agenda
+$ npm install
+```
+
+Con eso instalamos dependencias. Y para lanzar la webapp:
+
+```bash
+$ npm start
+```
+
+El navegador abrirá de manera automática una nueva pestaña con la Agenda.
