@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ContactosService } from "./contactos.service";
+
 @Component({
   // En 'selector' indicamos el elemento HTML en el cuál
   // se instanciará el componente.
@@ -18,14 +20,15 @@ export class AppComponent implements OnInit {
 
     listaContactos: string[];
 
+    // Hacemos la inyección de dependencias del servicio. Aprovechamos
+    // que TypeScript crea un atributo de aquellos argumentos que tienen
+    // modificador de acceso y están tipados.
+    constructor(private _contactosService: ContactosService) { }
+
     // El método 'ngOnInit' viene dado por la interfaz 'OnInit', que es el
     // hook en el cual inicializamos los valores del componente.
     ngOnInit(): void {
-        this.listaContactos = [
-            "Tim Cook",
-            "Bill Gates",
-            "Elon Musk"
-        ];
+        this.listaContactos = this._contactosService.obtenerContactos();
     }
 
     eliminarContacto(contacto: string): void {
