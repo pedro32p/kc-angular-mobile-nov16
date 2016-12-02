@@ -15,6 +15,7 @@ import { ContactosService } from "./contactos.service";
 export class AppComponent implements OnInit {
 
     listaContactos: Contacto[];
+    contactoSeleccionado: Contacto;
 
     // Hacemos la inyección de dependencias del servicio. Aprovechamos
     // que TypeScript crea un atributo de aquellos argumentos que tienen
@@ -40,8 +41,19 @@ export class AppComponent implements OnInit {
     }
 
     eliminarContacto(contacto: Contacto): void {
-        this._contactosService
-            .eliminarContacto(contacto)
-            .subscribe(() => this._actualizarListaContactos());
+        // Preguntamos al usuario si está seguro de eliminar al contacto.
+        if (confirm(`¿Estás seguro de eliminar a ${contacto.nombre}?`)) {
+            // En caso de estar seguro, lo eliminamos.
+            this._contactosService
+                .eliminarContacto(contacto)
+                .subscribe(() => {
+                    this.contactoSeleccionado = null;
+                    this._actualizarListaContactos();
+                });
+        }
+    }
+
+    verDetallesContacto(contacto: Contacto): void {
+        this.contactoSeleccionado = contacto;
     }
 }
