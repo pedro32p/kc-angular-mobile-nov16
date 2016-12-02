@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 
-import { Contacto } from "../contactos.service";
+import { Contacto } from "../contacto";
 
 @Component({
     selector: "lista-contactos",
@@ -13,10 +13,10 @@ export class ListaContactosComponent {
     @Input() contactos: Contacto[];
 
     // Usamos el decorador 'Output' para notificar datos de salida.
-    @Output() eliminar: EventEmitter<string> = new EventEmitter();
+    @Output() eliminar: EventEmitter<Contacto> = new EventEmitter();
 
     // Usamos 'emit' para notificar eventos.
-    notificarEliminacion(contacto: string): void {
+    notificarEliminacion(contacto: Contacto): void {
         this.eliminar.emit(contacto);
     }
 }

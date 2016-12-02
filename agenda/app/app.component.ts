@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ContactosService, Contacto } from "./contactos.service";
+import { Contacto } from "./contacto";
+import { ContactosService } from "./contactos.service";
 
 @Component({
   // En 'selector' indicamos el elemento HTML en el cuál
@@ -32,18 +33,15 @@ export class AppComponent implements OnInit {
         this._actualizarListaContactos();
     }
 
-    agregarContacto(nombreContacto: string): void {
-        
-        let contacto: Contacto = new Contacto();
-        contacto.nombre = nombreContacto;
-
+    agregarContacto(contacto: Contacto): void {
         this._contactosService
             .agregarContacto(contacto)
-            .subscribe((nuevoContacto: Contacto) => this._actualizarListaContactos());
-        
+            .subscribe(() => this._actualizarListaContactos());
     }
 
-    eliminarContacto(contacto: string): void {
-        //
+    eliminarContacto(contacto: Contacto): void {
+        this._contactosService
+            .eliminarContacto(contacto)
+            .subscribe(() => this._actualizarListaContactos());
     }
 }
