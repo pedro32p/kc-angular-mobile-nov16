@@ -3,6 +3,6 @@
     replicamos el elemento HTML por cada item en la lista -->
     <li *ngFor="let contacto of contactos"
         (click)="notificarContactoSeleccionado(contacto)">
-        {{ contacto.nombre }}
+        {{ contacto.nombre }} {{ contacto.apellidos }}
     </li>
 </ul>
