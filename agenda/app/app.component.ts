@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ContactosService } from "./contactos.service";
+import { ContactosService, Contacto } from "./contactos.service";
 
 @Component({
   // En 'selector' indicamos el elemento HTML en el cuál
@@ -13,7 +13,7 @@ import { ContactosService } from "./contactos.service";
 })
 export class AppComponent implements OnInit {
 
-    listaContactos: string[];
+    listaContactos: Contacto[];
 
     // Hacemos la inyección de dependencias del servicio. Aprovechamos
     // que TypeScript crea un atributo de aquellos argumentos que tienen
@@ -21,7 +21,9 @@ export class AppComponent implements OnInit {
     constructor(private _contactosService: ContactosService) { }
 
     private _actualizarListaContactos(): void {
-        this.listaContactos = this._contactosService.obtenerContactos();
+        this._contactosService
+            .obtenerContactos()
+            .subscribe((contactos: Contacto[]) => this.listaContactos = contactos);
     }
 
     // El método 'ngOnInit' viene dado por la interfaz 'OnInit', que es el
@@ -30,13 +32,18 @@ export class AppComponent implements OnInit {
         this._actualizarListaContactos();
     }
 
-    agregarContacto(contacto: string): void {
-        this._contactosService.agregarContacto(contacto);
-        this._actualizarListaContactos();
+    agregarContacto(nombreContacto: string): void {
+        
+        let contacto: Contacto = new Contacto();
+        contacto.nombre = nombreContacto;
+
+        this._contactosService
+            .agregarContacto(contacto)
+            .subscribe((nuevoContacto: Contacto) => this._actualizarListaContactos());
+        
     }
 
     eliminarContacto(contacto: string): void {
-        this._contactosService.eliminarContacto(contacto);
-        this._actualizarListaContactos();
+        //
     }
 }
