@@ -15,7 +15,7 @@ export class ContactosService {
 
     private _rutaApiContactos: string = "http://localhost:3005/contactos";
 
-    constructor(private _http: Http) { }
+    constructor(private _http: Http) { }  //Hacemos la inyección de dependencia de Http
 
     obtenerContactos(): Observable<Contacto[]> {
         return this._http
@@ -25,7 +25,7 @@ export class ContactosService {
                    });
     }
 
-    agregarContacto(contacto: Contacto): Observable<Contacto> {
+    agregarContacto(contacto: Contacto): Observable<Contacto> {  
         return this._http
                    .post(this._rutaApiContactos, contacto)
                    .map((datos: Response) => {

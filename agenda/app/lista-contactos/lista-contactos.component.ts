@@ -12,8 +12,10 @@ export class ListaContactosComponent {
     // Usamos el decorador 'Input' para enlazar datos de entrada.
     @Input() contactos: Contacto[];
     
+    //Usamos el decorador 'Output' para notificar datos de salida.
     @Output() contactoSeleccionado: EventEmitter<Contacto> = new EventEmitter();
 
+    //Usamos 'emit' para notificar eventos a quién quiera escuchar.
     notificarContactoSeleccionado(contacto: Contacto): void {
         this.contactoSeleccionado.emit(contacto);
     }
