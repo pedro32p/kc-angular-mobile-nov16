@@ -1,3 +1,13 @@
 {
-  "contactos": []
+  "contactos": [
+    {
+      "nombre": "Pepe",
+      "apellidos": "Jimenez",
+      "email": "sirwilliams_19@hotmail.com",
+      "telefono": "3423423",
+      "facebook": "jim.pepe",
+      "twitter": "@jimPepe",
+      "id": 1
+    }
+  ]
 }

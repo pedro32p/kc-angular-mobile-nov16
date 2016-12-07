@@ -1,4 +1,4 @@
-:host > div {
+:host > div {  /* host selecciona el componente */
     text-align: center;
 }
 

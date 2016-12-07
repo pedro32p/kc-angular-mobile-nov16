@@ -5,7 +5,7 @@ import { Http, Response } from "@angular/http";
 // desde el paquete 'rxjs/add/operator'.
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
-
+import "rxjs/add/operator/catch";
 import { Contacto } from "./contacto";
 
 // Para que una clase se comporte como un servicio
@@ -30,7 +30,11 @@ export class ContactosService {
                    .post(this._rutaApiContactos, contacto)
                    .map((datos: Response) => {
                        return datos.json() as Contacto;
-                   });
+                   })
+                   /* Podriamos hacer un catch
+                   .catch((error) =>{
+
+                   });*/
     }
 
     eliminarContacto(contacto: Contacto): Observable<any> {

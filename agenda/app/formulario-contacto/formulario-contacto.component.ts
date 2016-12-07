@@ -13,6 +13,6 @@ export class FormularioContactoComponent {
     @Output() nuevoContacto: EventEmitter<Contacto> = new EventEmitter();
 
     notificarCreacionContacto(formulario: FormGroup) {
-        this.nuevoContacto.emit(formulario.value as Contacto);
+        this.nuevoContacto.emit(formulario.value as Contacto); //de aquí va a la línea 9 de app.component.html
     }
 }
