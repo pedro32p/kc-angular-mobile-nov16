@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-
 import { Contacto } from "../contacto";
 
 @Component({
@@ -15,8 +14,14 @@ export class ListaContactosComponent {
     //Usamos el decorador 'Output' para notificar datos de salida.
     @Output() contactoSeleccionado: EventEmitter<Contacto> = new EventEmitter();
 
+    sentidoOrdenacion: string = "asc";
+
     //Usamos 'emit' para notificar eventos a quién quiera escuchar.
     notificarContactoSeleccionado(contacto: Contacto): void {
         this.contactoSeleccionado.emit(contacto);
+    }
+
+    cambiarOrden(): void {
+        this.sentidoOrdenacion = this.sentidoOrdenacion == "asc" ? "desc" : "asc";
     }
 }
